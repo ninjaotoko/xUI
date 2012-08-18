@@ -28,4 +28,23 @@ como usar:
     // pepe
 
 
-y mas...
+**title**, hace un título con el string de la variable.
+    
+    ${ lorem|title }
+    // Lorem Ipsum Dolor Sit Amet
+
+**toLocalDate**, pasa una fecha al formato local
+
+**getDateDayName**, devuelve el nombre del día
+
+**getDateDay**, devuelve el número del día en el mes
+
+**getDateMonthName**, devuelve el nombre del mes
+
+**getDateMonth**, devuelve el número de mes
+
+**getDateYear**, devuelve el año
+
+**getTimeHours**, devuelve la hora
+**getTimeMinutes**, devuelve los minutos
+**getTimeSeconds**, devuelve los segundos

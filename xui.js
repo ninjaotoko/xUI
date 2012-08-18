@@ -12,13 +12,13 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 var xUI = (function(){
-    var tpl
-    , vars = {}
+    var tpl,
+    vars = {},
 
     // regexp para identificar una variable de template con filtros y demas
-    , var_exp = new RegExp(/\$\{\s?([a-zA-Z0-9\_\-\.\|\:\'\"\/\s]+)\s?\}/g)
+    var_exp = new RegExp(/\$\{\s?([a-zA-Z0-9\_\-\.\|\:\'\"\/\s]+)\s?\}/g),
 
-    , filters = (function(){
+    filters = (function(){
         function str2date(str){
             if( $n.utils.isDate(str) ) return str;
             var dt = str.split(" ");
@@ -70,27 +70,27 @@ var xUI = (function(){
             },
             'truncateWords': function ( str, len ) { return ("" + str).split(/\s/).slice(0, len).join(' ') }
         }
-    }())
+    }()),
 
     // escape
-    , escape_slash = function(a){ return a.replace(/\|/g, '\\|').replace(/\:/g, '\\:') }
+    escape_slash = function(a){ return a.replace(/\|/g, '\\|').replace(/\:/g, '\\:') },
 
     // setea o devuelve el template
-    , template = function(a){
+    template = function(a){
         if(a){ 
             tpl = a;
             return xUI
         }
         return tpl
-    }
+    },
 
     // crea el context de una variable pra luego parsear y devolver su valor
-    , context = function(a){
+    context = function(a){
         return new RegExp('\\$\{\\s\?'+a+'\\s\?\}', 'gi')
-    }
+    },
 
     // render context. itera en la data y reemplaza en el template
-    , render = function ( data ) {
+    render = function ( data ) {
         if ( !$n.utils.isArray(data) ) {
             data = [data];
         }
@@ -112,10 +112,10 @@ var xUI = (function(){
         }
 
         return result
-    }
+    },
 
     // obtener todas las vars del template
-    , template_vars = function () {
+    template_vars = function () {
         var match, object_var;
 
         while( match = var_exp.exec( template() ) ) {
@@ -129,10 +129,10 @@ var xUI = (function(){
             //}
         }
         return vars
-    }
+    },
 
     // Resuelve la recursividad de un objeto, retorna el objeto final o undefined
-    , resolve_obj = function ( obj, strobj ) {
+    resolve_obj = function ( obj, strobj ) {
         strobj = strobj.split(/\./);
         for ( var i = 0; i < strobj.length; i++ ) {
             if ( obj.hasOwnProperty( strobj[i] ) || obj[ strobj[i] ]) {
@@ -151,10 +151,10 @@ var xUI = (function(){
             } else return undefined;
         }
         return obj
-    }
+    },
 
     // resuelve una variable con filtros, argumentos, etc
-    , resolve_vars = function(a){
+    resolve_vars = function(a){
         a = a.replace(/^\s+|\s+$/,'');
         var parts = /([\w\.]+)(?:\|?(\w+))?(?:\:?(.*))/gi.exec( a ).slice(1),
             obj = parts[0],
