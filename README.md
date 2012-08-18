@@ -10,9 +10,22 @@ como usar:
     // Mi nombre es Pepe, y tengo varios años.
 
 
-y también viene con filtros :)
+## y también viene con filtros :) ##
 
-default:
-upper
-lower
-title
+**default**, asigna un valor por defecto
+
+    ${ user.age|default:'varios' }
+    // varios
+
+**upper**, transforma a MAYUSCULAS
+
+    ${ user|upper }
+    // PEPE
+
+**lower**, transforma a minusculas
+
+    ${ user|lower }
+    // pepe
+
+
+y mas...
