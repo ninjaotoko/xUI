@@ -17,10 +17,12 @@ como usar:
     ${ user.age|default:'varios' }
     // varios
 
+
 **upper**, transforma a MAYUSCULAS
 
     ${ user|upper }
     // PEPE
+
 
 **lower**, transforma a minusculas
 
@@ -33,24 +35,74 @@ como usar:
     ${ lorem|title }
     // Lorem Ipsum Dolor Sit Amet
 
+
 **toLocalDate**, pasa una fecha al formato local
 
-**getDateDayName**, devuelve el nombre del día
+    ${ data.pub_date|toLocalDate }
+    // Sábado, 18 de Agosto, 2012
 
-**getDateDay**, devuelve el número del día en el mes
+
+**getDateDayName**, devuelve el nombre del día
+    
+    ${ data.pub_date|getDateDayName }
+    // Sábado
+
+
+**getDateDay**, devuelve el número del día en el mes en dos dígitos, 0x para los menores a 10
+
+    ${ data.pub_date|getDateDay }
+    // 18
+
 
 **getDateMonthName**, devuelve el nombre del mes
 
+    ${ data.pub_date|getDateMonthName }
+    // Agosto
+
+
 **getDateMonth**, devuelve el número de mes
 
-**getDateYear**, devuelve el año
+    ${ data.pub_date|getDateMonth }
+    // 8
 
-**getTimeHours**, devuelve la hora
+
+**getDateYear**, devuelve el año
+    
+    ${ data.pub_date|getDateYear }
+    // 2012
+
+
+**getTimeHours**, devuelve la hora en formato 24hs
+
+    ${ data.pub_date|getTimeHours }
+    // 16
+
 
 **getTimeMinutes**, devuelve los minutos
 
+    ${ data.pub_date|getTimeMinutes }
+    // 20
+
+
 **getTimeSeconds**, devuelve los segundos
+
+    ${ data.pub_date|getTimeSeconds }
+    // 32
+
 
 **length**, cuenta los items de un objeto
 
+    var data = [1, 2, 3, 'a', 'b'];
+    ...
+
+    ${ data|length }
+    // 5
+    
+
 **truncateWords**, corta una porción de un string en __n__ palabras
+    
+    var data = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor";
+    ...
+
+    ${ data|truncateWords:6 }
+    // "Lorem ipsum dolor sit amet, consectetur"
