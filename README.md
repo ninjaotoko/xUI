@@ -46,5 +46,11 @@ como usar:
 **getDateYear**, devuelve el año
 
 **getTimeHours**, devuelve la hora
+
 **getTimeMinutes**, devuelve los minutos
+
 **getTimeSeconds**, devuelve los segundos
+
+**length**, cuenta los items de un objeto
+
+**truncateWords**, corta una porción de un string en __n__ palabras
