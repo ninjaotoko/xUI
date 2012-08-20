@@ -1,4 +1,4 @@
-# xUI, temaplates simples pero poderosos #
+# xUI, temaplates simples en javascript pero poderosos #
 
 como usar:
 
@@ -78,13 +78,13 @@ como usar:
     // 16
 
 
-**getTimeMinutes**, devuelve los minutos
+**getTimeMinutes**, devuelve los minutos en dos dígitos, 0x para los menores a 10
 
     ${ data.pub_date|getTimeMinutes }
     // 20
 
 
-**getTimeSeconds**, devuelve los segundos
+**getTimeSeconds**, devuelve los segundos en dos dígitos, 0x para los menores a 10
 
     ${ data.pub_date|getTimeSeconds }
     // 32

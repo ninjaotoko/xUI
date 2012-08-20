@@ -20,7 +20,9 @@ var xUI = (function(){
 
     filters = (function(){
         function str2date(str){
-            if( $n.utils.isDate(str) ) return str;
+            if(Object.prototype.toString.call(str) == '[object Date]'){
+                return str;
+            }
             var dt = str.split(" ");
             var date = dt[0].split('-');
             var time = dt[1].split(':');
@@ -68,7 +70,10 @@ var xUI = (function(){
             'length': function ( obj ) { 
                 if ( obj != undefined ) { return obj.length } else { return 0 } 
             },
-            'truncateWords': function ( str, len ) { return ("" + str).split(/\s/).slice(0, len).join(' ') }
+            'truncateWords': function ( str, len ) { 
+                return ("" + str).split(/\s/).slice(0, len).join(' ') 
+            },
+            'makeList': function(str, 
         }
     }()),
 
@@ -91,7 +96,7 @@ var xUI = (function(){
 
     // render context. itera en la data y reemplaza en el template
     render = function ( data ) {
-        if ( !$n.utils.isArray(data) ) {
+        if (!Array.isArray(data)) {
             data = [data];
         }
         var n, result='';
@@ -137,7 +142,7 @@ var xUI = (function(){
         for ( var i = 0; i < strobj.length; i++ ) {
             if ( obj.hasOwnProperty( strobj[i] ) || obj[ strobj[i] ]) {
                 // identifica si es un metodo del objeto o una propiedad
-                if( $n.utils.isFunction( obj[ strobj[i] ] ) ){
+                if (Object.prototype.toString.call(obj[strobj[i]])=='[object Function]'){
                     try{ 
                         obj = obj[ strobj[i] ]( obj )
                     }catch(E){
