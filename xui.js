@@ -20,7 +20,7 @@ var xUI = (function(){
 
     filters = (function(){
         function str2date(str){
-            if(Object.prototype.toString.call(str) == '[object Date]'){
+            if(Object.prototype.toString.call(str)=='[object Date]'){
                 return str;
             }
             var dt = str.split(" ");
@@ -73,7 +73,9 @@ var xUI = (function(){
             'truncateWords': function ( str, len ) { 
                 return ("" + str).split(/\s/).slice(0, len).join(' ') 
             },
-            'makeList': function(str, 
+            'makeList': function(str){
+                return ("" + str).split(/\s/)
+            }
         }
     }()),
 
@@ -142,7 +144,7 @@ var xUI = (function(){
         for ( var i = 0; i < strobj.length; i++ ) {
             if ( obj.hasOwnProperty( strobj[i] ) || obj[ strobj[i] ]) {
                 // identifica si es un metodo del objeto o una propiedad
-                if (Object.prototype.toString.call(obj[strobj[i]])=='[object Function]'){
+                if ( Object.prototype.toString.call( obj[strobj[i]] ) == '[object Function]' ) {
                     try{ 
                         obj = obj[ strobj[i] ]( obj )
                     }catch(E){
